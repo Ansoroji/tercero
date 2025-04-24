@@ -62,7 +62,6 @@ if bg_image is not None:
     uploaded_file=bg_image
     st.image(uploaded_file, caption='Imagen cargada.', use_column_width=True)
     
-    # Guardar la imagen en el sistema de archivos
     with open(uploaded_file.name, 'wb') as f:
         f.write(uploaded_file.read())
     
@@ -74,7 +73,6 @@ st.write(text)
     
       
 if img_file_buffer is not None:
-    # To read image file buffer with OpenCV:
     bytes_data = img_file_buffer.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
@@ -96,10 +94,8 @@ with st.sidebar:
           os.mkdir("temp")
       except:
           pass
-      #st.title("Text to speech")
       translator = Translator()
       
-      #text = st.text_input("Enter text")
       in_lang = st.selectbox(
           "Seleccione el lenguaje de entrada",
           ("Ingles", "Español", "Bengali", "koreano", "Mandarin", "Japones"),
